@@ -186,7 +186,7 @@ $(document).on("click", ".lightB", function () {
 	
 	$("#audioOff").attr(
 		"src",
-		"img/interface/LightMode/audioOff.png"
+		"img/interface/LightMode/audioOff.svg"
 	);
 });
 
