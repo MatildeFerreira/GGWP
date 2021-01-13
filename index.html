@@ -1,0 +1,463 @@
+<!---WEB DESIGN II // P3. Visualization/Game APP // 2020/21
+//Matilde Ferreira & Guilherme Vila Maior-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="shortcut icon" type="image/png" href="img/favicon/favicon.ico" />
+	<title>GGwp</title>
+
+	<!-- import css reset -->
+	<link rel="stylesheet" href="css/css-reset.css" />
+
+	<!-- import the webpage's stylesheet -->
+	<link id="pagestyle" rel="stylesheet" type="text/css" href="css/style.css" />
+
+
+	<!-- import jquery -->
+	<script src="libraries/jquery-3.5.1.min.js"></script>
+
+	<!-- import the webpage's javascript file -->
+	<script src="script/script.js" defer></script>
+
+	<!-- import P5 -->
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.sound.min.js"></script>
+	<script src="script/sketch.js"></script>
+</head>
+
+<body>
+	<!-- load dos audios -->
+	<!-- som de fundo -->
+	<audio loop id="myAudio" src="sound/background.mp3" preload="auto"></audio>
+	<!-- som dos champions -->
+	<audio id="champAudio" src="sound/champions/Aatrox.mp3" preload="auto"></audio>
+	<!-- som de adicionar jogo -->
+	<audio id="lockInAudio" src="sound/play.mp3" preload="auto"></audio>
+
+	<!-- Pagina principal de LogIn -->
+	<div id="logIn">
+		<img id="logo" src="img/logo.png" alt="Logotipo GGWP" />
+		<input placeholder="summoner id" id="summonerNameInput" />
+		<button id="enterButton">enter</button>
+	</div>
+
+	<!-- Pagina de introdução -->
+	<div class="intro">
+		<div class="barra"></div>
+		<h1>
+			Hello, <br />
+			<span class="summ">Summoner</span>
+		</h1>
+
+		<h2 class="welcome">
+			Welcome to GGWP!
+		</h2>
+		<p class="text">
+			A place where you can keep track of your most recent League of Lengends
+			games, whether may them be
+			<span class="cSolo">Ranked Solo</span>,
+			<span class="cFlex">Flex</span> or <span class="cNormal">Normal</span>.
+			You'll be able to See your games once you've added them through "<span class="textBold">Add Game</span>"". After you add your games, you can see them in a graphic through
+			"<span class="textBold">See Game</span>", you can also view specific
+			stats by pressing your played Champions, and "see full stats", giving
+			you a wider range of information.
+		</p>
+		<p class="text">
+			Thank you, <span class="introID">SummonerID</span><br />for using this
+			platform.
+		</p>
+
+		<p class="ggwp">Good game and well played.</p>
+
+		<button id="ok">
+			ok
+		</button>
+	</div>
+
+	<!-- Página inicial -->
+	<div id="profilePage">
+		<!-- Header do Summoner-->
+		<div class="summoner">
+			<!-- se for para ter o ID e o LVL na mesma linha ->  <div class="summonerNameLevel">   -->
+			<span id="summonerName">SUMMONER NAME</span>
+			<span id="summonerLevel">SUMMONER LEVEL</span>
+			<img id="summonerIcon" src="img/icon/Icon_0.png" alt="Summoner Icon" />
+
+			<!-- Icons do formulário Add Game-->
+			<img id="roleIcon" src="img/roles/ADC.svg" alt="Role Icon" />
+			<span id="KDA">KDA: 4.4</span>
+
+			<!-- Icon de settings-->
+			<img id="settings" src="img/interface/settings.png" alt="Settings" />
+		</div>
+		<!-- Botões da primeira página-->
+		<button class="seeStats">see games</button>
+		<button class="addStats">add game</button>
+	</div>
+
+	<!-- Página de Settings -->
+	<div class="settings">
+		<div class="menu">
+			<!-- Botões -->
+
+			<!-- Botão de mudar tema -->
+			<div class="theme">
+				<p id="firstp">theme</p>
+
+				<!-- Botão de mudar tema para Dark Mode-->
+				<button class="darkB" onClick="swapStyleSheet('css/dark.css')">
+					<img class="iconSet" src="img/interface/LightMode/sun.svg" alt="Light Mode" />
+				</button>
+
+				<!-- Botão de mudar tema para Light Mode-->
+				<button class="lightB" onClick="swapStyleSheet('css/style.css')">
+					<img class="iconSet" src="img/interface/DarkMode/moon.png" alt="Dark Mode" />
+				</button>
+			</div>
+
+			<!-- Botão de som -->
+			<div class="sound">
+				<p>sound</p>
+
+				<img class="iconSet" id="audioOn" src="img/interface/LightMode/audioOn.svg" alt="Audio On" />
+			</div>
+
+			<!-- Botão de log off -->
+			<div class="log">
+				<p>log off</p>
+				<img class="iconSet" id="powerOff" src="img/interface/LightMode/audioOff.svg" onClick="logOut()" alt="Audio Off" />
+			</div>
+		</div>
+
+		<!-- Cruz de fechar as settings -->
+		<img class="closeP5" src="img/interface/LightMode/cruz.png" alt="Close" />
+	</div>
+
+	<!-- Pagina dos Game Modes -->
+	<div id="pageseegames">
+		<div id="modes">
+			<button class="rankedSolo">ranked solo</button>
+			<button class="rankedFlex">ranked flex</button>
+			<button class="normal">normal</button>
+		</div>
+		<!-- Seta voltar para trás -->
+		<img id="backArrowSee" src="img/interface/LightMode/arrowleft.png" alt="Back Arrow" />
+	</div>
+	<!-- Pagina de Adicionar jogo -->
+	<div class="pageaddgame">
+		<!-- Seta voltar para trás -->
+		<img id="backArrowAdd" src="img/interface/LightMode/arrowleft.png" alt="Back Arrow" />
+
+		<p class="indicacao">
+			Insert here the data from your last game!
+		</p>
+		<div class="gameInfoMenus">
+			<div class="custom-select" id="modebox">
+				<select id="mode">
+					<option value="1">mode</option>
+					<option>Ranked Solo</option>
+					<option>Ranked Flex</option>
+					<option>Normal</option>
+				</select>
+			</div>
+
+			<div class="winDefeat">
+				<button class="victory">victory</button>
+				<button class="defeat">defeat</button>
+			</div>
+
+			<div class="custom-select" id="champsbox">
+				<select id="champs">
+					<option value="1" selected="selected">champion</option>
+					<option>Aatrox</option>
+					<option>Ahri</option>
+					<option>Akali</option>
+					<option>Alistar</option>
+					<option>Amumu</option>
+					<option>Anivia</option>
+					<option>Aphelios</option>
+					<option>Ashe</option>
+					<option value="AurelionSol">Aurelion Sol</option>
+					<option>Azir</option>
+					<option>Bard</option>
+					<option>Blitzcrank</option>
+					<option>Brand</option>
+					<option>Braum</option>
+					<option>Caitlyn</option>
+					<option>Camille</option>
+					<option>Cassiopeia</option>
+					<option value="Chogath">Cho'Gath</option>
+					<option>Corki</option>
+					<option>Darius</option>
+					<option>Diana</option>
+					<option value="DrMundo">Dr. Mundo</option>
+					<option>Draven</option>
+					<option>Ekko</option>
+					<option>Elise</option>
+					<option>Evelynn</option>
+					<option>Ezreal</option>
+					<option value="FiddleSticks">Fiddlesticks</option>
+					<option>Fiora</option>
+					<option>Fizz</option>
+					<option>Galio</option>
+					<option>Gangplank</option>
+					<option>Garen</option>
+					<option>Gnar</option>
+					<option>Gragas</option>
+					<option>Graves</option>
+					<option>Hecarim</option>
+					<option>Heimerdinger</option>
+					<option>Illaoi</option>
+					<option>Irelia</option>
+					<option>Ivern</option>
+					<option>Janna</option>
+					<option value="JarvanIV">Jarvan IV</option>
+					<option>Jax</option>
+					<option>Jayce</option>
+					<option>Jhin</option>
+					<option>Jinx</option>
+					<option value="Kaisa">Kai'Sa</option>
+					<option>Kalista</option>
+					<option>Karma</option>
+					<option>Karthus</option>
+					<option>Kassadin</option>
+					<option>Katarina</option>
+					<option>Kayle</option>
+					<option>Kayn</option>
+					<option>Kennen</option>
+					<option value="Khazix">Kha'Zix</option>
+					<option>Kindred</option>
+					<option>Kled</option>
+					<option value="KogMaw">Kog'Maw</option>
+					<option value="Leblanc">LeBlanc</option>
+					<option value="LeeSin">Lee Sin</option>
+					<option>Leona</option>
+					<option>Lillia</option>
+					<option>Lissandra</option>
+					<option>Lucian</option>
+					<option>Lulu</option>
+					<option>Lux</option>
+					<option>Malphite</option>
+					<option>Malzahar</option>
+					<option>Maokai</option>
+					<option value="MasterYi">Master Yi</option>
+					<option value="MissFortune">Miss Fortune</option>
+					<option>Mordekaiser</option>
+					<option>Morgana</option>
+					<option>Nami</option>
+					<option>Nasus</option>
+					<option>Nautilus</option>
+					<option>Neeko</option>
+					<option>Nidalee</option>
+					<option>Nocturne</option>
+					<option value="Nunu">Nunu and Willump</option>
+					<option>Olaf</option>
+					<option>Orianna</option>
+					<option>Ornn</option>
+					<option>Pantheon</option>
+					<option>Poppy</option>
+					<option>Pyke</option>
+					<option>Qiyana</option>
+					<option>Quinn</option>
+					<option>Rakan</option>
+					<option>Rammus</option>
+					<option value="RekSai">Rek'Sai</option>
+					<option>Rell</option>
+					<option>Renekton</option>
+					<option>Rengar</option>
+					<option>Riven</option>
+					<option>Rumble</option>
+					<option>Ryze</option>
+					<option>Samira</option>
+					<option>Sejuani</option>
+					<option>Senna</option>
+					<option>Seraphine</option>
+					<option>Sett</option>
+					<option>Shaco</option>
+					<option>Shen</option>
+					<option>Shyvana</option>
+					<option>Singed</option>
+					<option>Sion</option>
+					<option>Sivir</option>
+					<option>Skarner</option>
+					<option>Sona</option>
+					<option>Soraka</option>
+					<option>Swain</option>
+					<option>Sylas</option>
+					<option>Syndra</option>
+					<option value="TahmKench">Tahm Kench</option>
+					<option>Taliyah</option>
+					<option>Talon</option>
+					<option>Taric</option>
+					<option>Teemo</option>
+					<option>Thresh</option>
+					<option>Tristana</option>
+					<option>Trundle</option>
+					<option>Tryndamere</option>
+					<option value="TwistedFate">Twisted Fate</option>
+					<option>Twitch</option>
+					<option>Udyr</option>
+					<option>Urgot</option>
+					<option>Varus</option>
+					<option>Vayne</option>
+					<option>Veigar</option>
+					<option value="Velkoz">Vel'Koz</option>
+					<option>Vi</option>
+					<option>Viktor</option>
+					<option>Vladimir</option>
+					<option>Volibear</option>
+					<option>Warwick</option>
+					<option>Wukong</option>
+					<option>Xayah</option>
+					<option>Xerath</option>
+					<option value="XinZhao">Xin Zhao</option>
+					<option>Yasuo</option>
+					<option>Yone</option>
+					<option>Yorick</option>
+					<option>Yuumi</option>
+					<option>Zac</option>
+					<option>Zed</option>
+					<option>Ziggs</option>
+					<option>Zilean</option>
+					<option>Zoe</option>
+					<option>Zyra</option>
+				</select>
+			</div>
+
+			<div class="custom-select" id="rolebox">
+				<select id="role">
+					<option value="1">role</option>
+					<option>Top</option>
+					<option>Jungle</option>
+					<option>Mid</option>
+					<option>ADC</option>
+					<option>Support</option>
+				</select>
+			</div>
+
+			<div class="kda">
+				<input type="number" placeholder="kills" id="kills" />
+				<input type="number" placeholder="deaths" id="deaths" />
+				<input type="number" placeholder="assists" id="assists" />
+			</div>
+
+			<button id="addGame">add</button>
+			<p id="notallfilled">Please, fill all the parameters</p>
+		</div>
+	</div>
+
+	<!-- Pagina com o gráfico -->
+	<div id="P5game">
+		<img id="closeP5" src="img/interface/LightMode/cruz.png" alt="Close" />
+		<div id="canvasForHTML"></div>
+		<div id="Mode"></div>
+		<span id="modeP5">MODE</span>
+		<span id="fullstats">see full stats</span>
+	</div>
+
+	<!-- Pagina com as tabelas -->
+	<div class="tables">
+		<table class="tabelas" id="matches">
+			<tr>
+				<th>Matches</th>
+				<th><span id="MTotal" class="bold">30</span></th>
+			</tr>
+			<tr>
+				<td>Victories</td>
+				<td><span id="VTotal" class="bold">19</span></td>
+			</tr>
+			<tr>
+				<td>Defeats</td>
+				<td><span id="DTotal" class="bold">11</span></td>
+			</tr>
+			<tr>
+				<td>Winrate</td>
+				<td><span id="WRTotal" class="bold">11</span></td>
+			</tr>
+		</table>
+
+		<table class="tabelas" id="matchesLanes">
+			<tr>
+				<th>Role</th>
+				<th>Total</th>
+				<th>Winrate</th>
+			</tr>
+			<tr>
+				<td>Top</td>
+				<td><span id="TTop" class="bold">4</span></td>
+				<td><span id="WRTop" class="bold">70%</span></td>
+			</tr>
+			<tr>
+				<td>Jungle</td>
+				<td><span id="TJungle" class="bold">5</span></td>
+				<td><span id="WRJungle" class="bold">40%</span></td>
+			</tr>
+			<tr>
+				<td>Mid</td>
+				<td><span id="TMid" class="bold">3</span></td>
+				<td><span id="WRMid" class="bold">56%</span></td>
+			</tr>
+			<tr>
+				<td>ADC</td>
+				<td><span id="TADC" class="bold">6</span></td>
+				<td><span id="WRADC" class="bold">47%</span></td>
+			</tr>
+			<tr>
+				<td>Supp</td>
+				<td><span id="TSupp" class="bold">2</span></td>
+				<td><span id="WRSupp" class="bold">63%</span></td>
+			</tr>
+		</table>
+
+		<table class="tabelas" id="matchesChamp">
+			<tr>
+				<td>Most played champion</td>
+				<td><span class="textBold" id="MPChamp"></span></td>
+			</tr>
+			<tr>
+				<td>
+					<span>Most played role</span>
+				</td>
+				<td><span class="textBold" id="MPRole"></span></td>
+			</tr>
+		</table>
+
+		<div class="setas">
+			<span class="setaUm">abc</span>
+			<img class="seta" id="previousTableChamp" src="img/interface/LightMode/arrowleft.png" alt="Back Arrow" />
+
+			<img class="seta" id="nextTableLanes" src="img/interface/LightMode/arrowright.png" alt="Next Arrow" />
+			<span class="setaDois">abc</span>
+		</div>
+	</div>
+
+	<!-- Pagina com a info de cada champion -->
+	<div id="ChampStats">
+		<div class="championGradient">
+			<img id="ChampIMG" src="img/loading/Aatrox_0.jpg" alt="Champion image" />
+		</div>
+		<h2 id="ChampName">AATROX</h2>
+		<p id="ChampKDA">
+			<span class="ChampKDAvalue">2</span>
+			Average <span class="bold">kda</span>
+		</p>
+		<p id="ChampLANE">
+			<span class="ChampLanevalue">Mid</span>
+			Most played <span class="bold">role</span>
+		</p>
+		<div id="WR">
+			<div id="W"></div>
+			<div id="D"></div>
+		</div>
+		<p id="winrate">
+			WINRATE <span class="ChampWRvalue bold">50%</span>
+		</p>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,1485 @@
+/*WEB DESIGN II // P3. Visualization/Game APP // 2020/21
+//Matilde Ferreira & Guilherme Vila Maior*/
+
+/* CSS files add styling rules to your content */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url(/fonts/Nonoy-Bold.otf);
+
+body {
+  background-color: #F9F9F9;
+  margin: 0px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+input {
+  outline: 0;
+}
+button {
+  cursor: pointer;
+  outline: 0;
+}
+
+#logo {
+  width: 65%;
+  top: 35%;
+  position: fixed;
+  left: 50%;
+  max-width: 350px;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.logoAnim {
+  animation: logoAnim 1000ms forwards 200ms;
+  transition: ease;
+}
+@keyframes logoAnim {
+  0% {
+  }
+  100% {
+    top: 115%;
+  }
+}
+
+/* input do user */
+#summonerNameInput {
+  text-align: center;
+  position: fixed;
+  margin-left: 50%;
+  bottom: 25%;
+  -webkit-transform: translate(-50%, -50%);
+  border-radius: 50px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  border: 3px solid #64D8A9;
+  line-height: 20px;
+  background-color: #F9F9F9;
+  width: 60%;
+  height: 42px;
+}
+
+#summonerNameInput::placeholder {
+  text-transform: upperCase;
+}
+
+/* animação do input "ativada" */
+.summonerNameInputAnim {
+  animation: summonerNameInputAnim 1000ms forwards 100ms;
+  transition: ease;
+}
+/* input do input */
+@keyframes summonerNameInputAnim {
+  0% {
+  }
+  100% {
+    bottom: -100px;
+  }
+}
+
+.barra {
+  width: 100%;
+  background: #111217;
+  height: 145px;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+/* página do "aviso" */
+.intro {
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  display: none;
+  text-align: left;
+}
+/* Hello Summoner */
+.intro h1 {
+  font-weight: 700;
+  font-size: 38px;
+  font-family: "Noto Sans KR R", sans-serif;
+  margin-bottom: 50px;
+  color: white;
+  margin-top: 50px;
+}
+
+/* verde Summoner */
+.summ {
+  color: #64D8A9;
+}
+
+/* texto do aviso */
+.text {
+  color: #7C7C7C;
+  font-weight: 100;
+  font-family: "Noto Sans KR R", sans-serif;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* cor Ranked Solo */
+.cSolo {
+  color: #C922A3;
+  font-weight: 500;
+}
+
+/* cor Ranked Flex */
+.cFlex {
+  color: #9221A7;
+  font-weight: 500;
+}
+
+/* cor Normal */
+.cNormal {
+  color: #73EDFC;
+  font-weight: 500;
+}
+
+/* texto a bold */
+.textBold {
+  font-weight: 500;
+}
+
+/* GG WP */
+.ggwp {
+  color: #7C7C7C;
+  font-weight: 500;
+  font-family: "Noto Sans KR R", sans-serif;
+  margin-top: 10px;
+}
+
+/* enter profile button */
+#enterButton,
+#ok {
+  color: rgb(250, 250, 250);
+  background-color: #1E232A;
+  border-style: none;
+  position: fixed;
+  margin-left: 50%;
+  bottom: 15%;
+  -webkit-transform: translate(-50%, -50%);
+  border-radius: 50px;
+  font-family: "Noto Sans KR R", sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  text-transform: upperCase;
+  width: calc(30% + 2px);
+  height: 45px;
+  letter-spacing: 1px;
+  padding-top: 4px;
+}
+#ok {
+  display: none;
+  position: fixed;
+  margin-left: calc(50% - 13% + 6px);
+}
+
+/* animação do enter "ativada" */
+.enterButtonAnim {
+  animation: enterButtonAnim 1000ms forwards;
+  transition: ease;
+}
+
+/* animação do enter */
+@keyframes enterButtonAnim {
+  0% {
+  }
+  100% {
+    bottom: -100px;
+  }
+}
+
+.profile {
+  width: 100%;
+  height: 100%;
+}
+
+/* barra de cor no topo - header*/
+.summoner {
+  background-color: #111217;
+  background-image: none;
+  width: 100%;
+  height: 155px;
+  box-sizing: border-box;
+  display: none;
+  background-size: 100%;
+  margin-top: -500px;
+  z-index: 0;
+  position: fixed;
+  border-bottom: 7px solid #64D8A9;
+}
+
+/* animação da header ao entrar */
+.summonerAnim {
+  margin-top: -500px;
+  animation: summonerAnim 1000ms forwards 400ms;
+  transition: ease;
+}
+@keyframes summonerAnim {
+  0% {
+    margin-top: -500px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+
+/* animação da header ao escolher o champ */
+.summonerAnimDown {
+  height: 150px;
+  margin-top: 0px;
+  animation: summonerAnimDown 1000ms forwards;
+  transition: ease;
+}
+@keyframes summonerAnimDown {
+  0% {
+    margin-top: 0px;
+    height: 150px;
+  }
+  100% {
+    margin-top: 0px;
+    height: 185px;
+  }
+}
+
+/* animação da header ao voltar para trás */
+.summonerAnimUp {
+  height: 185px;
+  margin-top: 0px;
+  animation: summonerAnimUp 1000ms forwards;
+  transition: ease;
+}
+@keyframes summonerAnimUp {
+  0% {
+    height: 185px;
+  }
+  100% {
+    margin-top: 0px;
+    height: 150px;
+  }
+}
+
+/* summoner icon */
+#summonerIcon {
+  width: 100px;
+  position: fixed;
+  margin-top: 155px;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  clip-path: circle(50px at center);
+  display: none;
+}
+
+/* summoner name */
+#summonerName {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  color: rgb(250, 250, 250);
+  position: fixed;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  margin-top: 55px;
+  font-size: 30px;
+  display: none;
+}
+
+/* summoner level */
+#summonerLevel {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #64D8A9;
+  position: fixed;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  margin-top: 85px;
+  font-size: 15px;
+  display: none;
+}
+
+.indicacao {
+  font-family: "Noto Sans KR", sans-serif;
+  color: rgb(150, 150, 150);
+  font-weight: 100;
+  font-size: 15px;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  width: 100%;
+  display: none;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+#roleIcon {
+  position: absolute;
+  width: 50px;
+  top: 65px;
+  left: 50px;
+  display: none;
+  opacity: 0.9;
+}
+
+.roleIconAnim {
+  animation: roleIconAnim 1000ms forwards;
+  transition: ease;
+}
+
+@keyframes roleIconAnim {
+  0% {
+    top: 65px;
+  }
+  100% {
+    top: 90px;
+  }
+}
+
+#KDA {
+  position: absolute;
+  top: 90px;
+  right: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgb(250, 250, 250);
+  font-family: "Noto Sans KR", sans-serif;
+  opacity: 0.9;
+  display: none;
+}
+
+.KDAanim {
+  animation: KDAanim 1000ms forwards;
+  transition: ease;
+}
+
+@keyframes KDAanim {
+  0% {
+    top: 90px;
+  }
+  100% {
+    top: 105px;
+  }
+}
+
+/* SEE STATS and ADD STATS button */
+.seeStats,
+.addStats {
+  border: 3px solid #64D8A9;
+  display: block;
+  color: rgb(250, 250, 250);
+  width: 60%;
+  height: 45px;
+  border-radius: 50px;
+  top: -200px;
+  text-align: center;
+  position: fixed;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  border-radius: 50px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  background-color: #1E232A;
+  display: none;
+  z-index: -1;
+  box-sizing: content-box;
+  padding-bottom: 4px;
+}
+
+/* animação de SEE STATS entrar */
+.seeStatsAnim {
+  animation: seeStatsAnim 1000ms forwards 200ms;
+  transition: ease;
+}
+@keyframes seeStatsAnim {
+  0% {
+  }
+  100% {
+    top: 50%;
+  }
+}
+
+/* animação de SEE STATS sair  */
+.seeStatsAnimOut {
+  top: 50%;
+  animation: seeStatsAnimOut 1000ms forwards 100ms;
+  transition: ease;
+}
+@keyframes seeStatsAnimOut {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+/* animação de ADD STATS entrar  */
+.addStatsAnim {
+  animation: addStatsAnim 1000ms forwards 100ms;
+  transition: ease;
+}
+@keyframes addStatsAnim {
+  0% {
+  }
+  100% {
+    top: 50%;
+    margin-top: 80px;
+  }
+}
+
+/* animação de SEE STATS sair  */
+.addStatsAnimOut {
+  animation: addStatsAnimOut 1000ms forwards;
+  transition: ease;
+}
+@keyframes addStatsAnimOut {
+  0% {
+    top: 50%;
+    margin-top: 80px;
+  }
+  100% {
+    top: 120%;
+  }
+}
+
+.menu {
+  text-align: center;
+  display: none;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.menu p {
+  font-family: "Noto Sans KR", sans-serif;
+  text-transform: upperCase;
+  font-size: 30px;
+  font-weight: 100;
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+
+#firstp {
+  margin-top: 0px;
+}
+
+#settings {
+  position: fixed;
+  top: 15px;
+  width: 20px;
+  right: 15px;
+  z-index: 6;
+  display: none;
+  cursor: pointer;
+}
+
+.lightB {
+  border: none;
+  display: none;
+  background: none;
+  height: 70px;
+  background: none;
+}
+
+.darkB {
+  border: none;
+  background-color: transparent;
+  height: 70px;
+  background: none;
+}
+
+.iconSet {
+  width: 70px;
+  cursor: pointer;
+}
+
+#backArrowAdd,
+#backArrowSee {
+  height: 20px;
+  position: fixed;
+  bottom: 45px;
+  left: 5%;
+  display: none;
+  z-index: 6;
+  cursor: pointer;
+}
+
+#closeP5,
+.closeP5 {
+  width: 15px;
+  top: 45px;
+  right: 25px;
+  position: fixed;
+  display: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* pagina dos Game Modes */
+#modes {
+  position: fixed;
+  width: 100%;
+  display: none;
+  z-index: -1;
+}
+
+/* animação geral da pagina Game Modes a entrar */
+.modesAnim {
+  animation: modesAnim 2000ms forwards;
+  transition: ease;
+}
+@keyframes modesAnim {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 45%;
+  }
+}
+
+/* animação geral da pagina Game Modes a sair */
+.modesAnimOut {
+  top: 45%;
+  animation: modesAnimOut 1600ms forwards;
+  transition: ease;
+}
+@keyframes modesAnimOut {
+  0% {
+    top: 45%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* animação das margens bottom entre os Modos de Jogo */
+.modesMarginAnimOut {
+  animation: modesMarginAnimOut 1000ms forwards;
+  transition: ease;
+}
+@keyframes modesMarginAnimOut {
+  0% {
+    margin-bottom: 30px;
+  }
+  100% {
+    margin-bottom: 150px;
+  }
+}
+
+/* RANKEDSOLO, RANKEDFLEX, NORMAL css */
+.rankedSolo,
+.rankedFlex,
+.normal {
+  display: block;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 100;
+  height: 45px;
+  width: 60%;
+  color: rgb(250, 250, 250);
+  background-color: #1E232A;
+  font-size: 20px;
+  border-radius: 50px;
+  display: none;
+  top: 3%;
+  padding-bottom: 4px;
+  box-sizing: content-box;
+}
+.rankedSolo {
+  border: 3px solid #C922A3;
+  margin-bottom: 30px;
+}
+.rankedFlex {
+  border: 3px solid #9221A7;
+  margin-bottom: 30px;
+}
+.normal {
+  border: 3px solid #73EDFC;
+}
+
+/* bot gradient for transitions */
+body:after {
+  content: "";
+  position: fixed;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(249, 249, 249, 0),
+    rgba(249, 249, 249, 1) 100%
+  );
+  width: 100%;
+  height: 9em;
+}
+
+/* div de CRIAR UM JOGO */
+.gameInfoMenus {
+  position: fixed;
+  top: -20%;
+  width: 75%;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%);
+  display: none;
+  z-index: -1;
+}
+
+/* animação da pagina de CRIAR UM JOGO - animate in*/
+.gameInfoMenusAnim {
+  animation: gameInfoMenusAnim 1000ms forwards;
+  transition: ease;
+}
+@keyframes gameInfoMenusAnim {
+  0% {
+  }
+  100% {
+    top: 35%;
+  }
+}
+
+/* animação da pagina de CRIAR UM JOGO - animate out*/
+.gameInfoMenusAnimOut {
+  animation: gameInfoMenusAnimOut 1200ms forwards;
+  transition: ease;
+}
+@keyframes gameInfoMenusAnimOut {
+  0% {
+    top: 35%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/*INICIO MENUS*/
+
+/* The container must be positioned relative: 
+class dos menus (MODO e CHAMPION e LANE)*/
+.custom-select {
+  position: relative;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%);
+  top: 30%;
+  width: 100%;
+  height: 45px;
+  clear: both;
+}
+
+/*hide original SELECT element*/
+.custom-select select {
+  display: none;
+}
+
+/*css do "principal", o que é escolhido*/
+.select-selected {
+  background-color: transparent;
+  border-radius: 50px;
+}
+
+/*conjunto das opções*/
+.select-items {
+  border-radius: 20px;
+  margin-top: -10px;
+}
+
+/*primeira escolha de cada menu*/
+.gameInfoMenus .custom-select:nth-child(1) div.select-items div:nth-child(1),
+.gameInfoMenus .custom-select:nth-child(3) div.select-items div:nth-child(1),
+.gameInfoMenus .custom-select:nth-child(4) div.select-items div:nth-child(1) {
+  margin: -10px 0 0 0;
+}
+
+/*todas as escolhas entre a primeira e ultima de cada menu*/
+.gameInfoMenus .custom-select:nth-child(1) div.select-items div,
+.gameInfoMenus .custom-select:nth-child(3) div.select-items div,
+.gameInfoMenus .custom-select:nth-child(4) div.select-items div {
+  margin: 0 0;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding: 10px 0;
+}
+
+/*última escolha de cada menu*/
+.gameInfoMenus
+  .custom-select:nth-child(1)
+  div.select-items
+  div:nth-last-child(1),
+.gameInfoMenus
+  .custom-select:nth-child(3)
+  div.select-items
+  div:nth-last-child(1),
+.gameInfoMenus
+  .custom-select:nth-child(4)
+  div.select-items
+  div:nth-last-child(1) {
+  margin: 0 0 -10px 0;
+  border: none;
+}
+
+/*overflow dos menus */
+.gameInfoMenus .custom-select:nth-child(3) div.select-items {
+  height: 170px;
+  overflow: scroll;
+}
+.gameInfoMenus .custom-select:nth-child(4) div.select-items {
+  height: 130px;
+  overflow: scroll;
+}
+
+/*menu do MODO por cima do menu CHAMPIONS*/
+.gameInfoMenus .custom-select:nth-child(1) {
+  z-index: 3;
+}
+.gameInfoMenus .custom-select:nth-child(3) {
+  z-index: 2;
+}
+.gameInfoMenus .custom-select:nth-child(4) {
+  z-index: 1;
+}
+
+/* não sei como, mas isto faz com que a underline border vá de um lado ao outro em todos os menus*/
+.select-items:nth-child(3) {
+  padding: 10px 0;
+}
+
+/* style the items (options), including the selected item: */
+.select-items,
+.select-selected {
+  padding: 9px 16px;
+  color: rgb(150, 150, 150);
+  background-color: #F9F9F9;
+  font-weight: 100;
+  margin: 5px 0 5px;
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.select-items {
+}
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.winDefeat {
+  text-align: center;
+  display: block;
+}
+.victory,
+.defeat {
+  display: inline-block;
+  background-color: #F9F9F9;
+  width: calc(50% - 7px);
+  border-radius: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0px;
+  font-size: 20px;
+  height: 40px;
+  padding-bottom: 4px;
+}
+
+.victory {
+  color: #29A8ED;
+  border: 1px solid #29A8ED;
+  margin: 5px 0 10px;
+  float: left;
+}
+
+.defeat {
+  color: #FF3B27;
+  border: 1px solid #FF3B27;
+  margin: 5px 0 10px;
+  float: right;
+}
+.victoryselected {
+  color: rgb(250, 250, 250);
+  background-color: #29A8ED;
+  font-weight: 500;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.defeatselected {
+  color: rgb(250, 250, 250);
+  background-color: #FF3B27;
+  font-weight: 500;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.kda {
+  text-align: center;
+  width: 100%;
+}
+
+#kills,
+#deaths,
+#assists {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  width: 30%;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #F9F9F9;
+  border: 1px solid rgb(200, 200, 200);
+  font-weight: 200;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#kills {
+  margin: 5px 0 0 0;
+  float: left;
+}
+#deaths {
+  margin: 5px 0 0 0;
+}
+#assists {
+  margin: 5px 0 0 0;
+  float: right;
+}
+
+#kills::placeholder,
+#deaths::placeholder,
+#assists::placeholder {
+  color: rgb(150, 150, 150);
+  font-weight: 200;
+}
+
+#addGame {
+  background-color: #1E232A;
+  text-transform: upperCase;
+  color: rgb(250, 250, 250);
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  border-radius: 50px;
+  border: none;
+  align-content: center;
+  text-align: center;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%);
+  margin-top: 30px;
+  display: none;
+  z-index: 0;
+  height: 47px;
+  width: calc(30% + 2px);
+}
+
+#notallfilled {
+  align-content: center;
+  text-align: center;
+  font-size: 15px;
+  opacity: 0.6;
+  margin-top: 25px;
+  margin-bottom: -10px;
+  font-family: "Noto Sans KR", sans-serif;
+  display: none;
+}
+
+#canvasForHTML {
+  width: 100%;
+  display: none;
+  top: 30%;
+  z-index: 0;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+}
+
+#Mode {
+  width: 100%;
+  height: 3%;
+  background-color: rgb(201, 34, 163);
+  position: fixed;
+  top: 0%;
+  left: 0;
+  z-index: 30;
+  display: none;
+  text-transform: upperCase;
+  box-sizing: border-box;
+  position: fixed;
+}
+
+#modeP5 {
+  display: none;
+  font-weight: 700;
+  color: rgb(250, 250, 250);
+  font-size: 36px;
+  position: fixed;
+  z-index: 6;
+  left: 23px;
+  top: 33px;
+  text-align: center;
+  z-index: 31;
+  color: black;
+  text-transform: upperCase;
+}
+
+#fullstats {
+  display: none;
+  text-transform: lowerCase;
+  position: fixed;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  color: black;
+  top: 73px;
+  z-index: 6;
+  left: 25px;
+  z-index: 31;
+  cursor: pointer;
+}
+
+.modeOutline {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* ------tabelas-------- */
+.tables {
+  display: none;
+}
+.tabelas {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  border-collapse: separate;
+  width: calc(85% - 2px);
+  border-radius: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transition: 5s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 26px;
+  border: 5px solid rgb(25, 250, 250);
+}
+
+.tabelas td,
+.tabelas th {
+  border: 3px solid rgb(25, 250, 250);
+  padding: 15px;
+  color: rgb(250, 250, 250);
+  text-align: center;
+  background-color: #1E232A;
+}
+
+.tabelas th {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #0A1315;
+}
+
+.setaUm,
+.setaDois {
+  line-height: 22px;
+  text-transform: uppercase;
+  color: black;
+  vertical-align: middle;
+  font-weight: 400;
+}
+
+.setaUm {
+  padding: 10px;
+}
+
+.setaDois {
+  float: right;
+  margin-right: 10px;
+}
+
+/* ------------- tabela com o geral ---------- */
+#matches th:nth-child(1) {
+  border-top-left-radius: 20px;
+}
+#matches th:nth-child(2) {
+  border-top-right-radius: 20px;
+}
+#matches tr:nth-child(4) td:nth-child(1) {
+  border-bottom-left-radius: 20px;
+}
+#matches tr:nth-child(4) td:nth-child(2) {
+  border-bottom-right-radius: 20px;
+}
+/* ------------- tabela com as Lanes ---------- */
+#matchesLanes th:nth-child(1) {
+  border-top-left-radius: 20px;
+}
+#matchesLanes th:nth-child(3) {
+  border-top-right-radius: 20px;
+}
+
+#matchesLanes tr:nth-child(6) td:nth-child(1) {
+  border-bottom-left-radius: 20px;
+}
+#matchesLanes tr:nth-child(6) td:nth-child(3) {
+  border-bottom-right-radius: 20px;
+}
+
+#matchesLanes,
+#matchesChamp {
+  display: none;
+}
+
+#matchesChamp tr:nth-child(1) td:nth-child(1) {
+  border-top-left-radius: 20px;
+}
+
+#matchesChamp tr:nth-child(1) td:nth-child(2) {
+  border-top-right-radius: 20px;
+  vertical-align: middle;
+}
+
+#matchesChamp tr:nth-child(2) td:nth-child(1) {
+  border-bottom-left-radius: 20px;
+}
+#matchesChamp tr:nth-child(2) td:nth-child(2) {
+  border-bottom-right-radius: 20px;
+  vertical-align: middle;
+}
+
+/* ------------- Animações das tabelas ---------- */
+.matchesAnimOut {
+  /* animação tabela MATCHES a sair para entrar as LANES */
+  animation: matchesAnimOut 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesAnimOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    left: -50%;
+    opacity: 0;
+  }
+}
+
+.matchesLanesAnimIn {
+  /* animação tabela LANES a entrar para sair o MATCHES */
+  animation: matchesLanesAnimIn 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesLanesAnimIn {
+  0% {
+    left: 150%;
+    opacity: 0;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+.matchesAnimIn {
+  /* animação tabela MATCHES a entrar para sair as LANES */
+  animation: matchesAnimIn 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesAnimIn {
+  0% {
+    left: -50%;
+    opacity: 0;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+.matchesLanesAnimOut {
+  /* animação tabela LANES a sair para entrar o MATCHES */
+  animation: matchesLanesAnimOut 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesLanesAnimOut {
+  0% {
+    left: 50%;
+    opacity: 1;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+.matchesAnimOut2 {
+  /* animação tabela MATCHES a sair para entrar o CHAMP */
+  animation: matchesAnimOut2 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesAnimOut2 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+.matchesChampAnimIn {
+  /* animação tabela CHAMP a entrar para sair o MATCHES */
+  animation: matchesChampAnimIn 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesChampAnimIn {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+.matchesChampAnimOut {
+  /* animação tabela CHAMP a sair para entrar o MATCHES */
+  animation: matchesChampAnimOut 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesChampAnimOut {
+  0% {
+    left: 50%;
+    opacity: 1;
+  }
+  100% {
+    left: -150%;
+    opacity: 0;
+  }
+}
+
+.matchesAnimIn2 {
+  /* animação tabela MATCHES a entrar para sair o CHAMP */
+  animation: matchesAnimIn2 800ms forwards;
+  transition: ease;
+}
+@keyframes matchesAnimIn2 {
+  0% {
+    left: 150%;
+    opacity: 0;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+.seta {
+  width: 15px;
+}
+
+.setas {
+  width: 80%;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%);
+  bottom: 15%;
+  position: fixed;
+  z-index: 6;
+}
+
+#previousTableChamp,
+#previousTableMatches {
+  float: left;
+}
+#nextTableLanes,
+#nextTableMatches {
+  float: right;
+}
+
+#ChampStats {
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  width: 80%;
+  max-width: 300px;
+  background-color: rgb(0, 0, 0);
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 30px;
+  box-sizing: border-box;
+  display: none;
+  z-index: 100;
+  cursor: pointer;
+}
+#ChampIMG {
+  width: 100%;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.championGradient:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 100%
+  );
+  width: 100%;
+  height: 23em;
+  border-radius: 20px;
+}
+
+#ChampName {
+  width: 100%;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: -7vh;
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+#ChampKDA {
+  position: absolute;
+  bottom: 2vh;
+  right: 5%;
+  color: rgb(250, 250, 250);
+  font-weight: 200;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.ChampKDAvalue,
+.ChampLanevalue {
+  display: block;
+  font-size: 35px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.ChampKDAvalue {
+  text-align: right;
+}
+
+.ChampLanevalue {
+  text-align: left;
+}
+.ChampWRvalue {
+  font-weight: bold;
+}
+
+#ChampLANE {
+  position: absolute;
+  bottom: 2vh;
+  left: 5%;
+  color: rgb(250, 250, 250);
+  font-weight: 200;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#WR {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  height: 1vh;
+  top: 5px;
+}
+#W {
+  position: absolute;
+  width: 50%;
+  height: 1vh;
+  bottom: -3vh;
+  background-color: #29A8ED;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  float: left;
+}
+#D {
+  position: absolute;
+  right: 0;
+  bottom: -3vh;
+  width: 50%;
+  height: 1vh;
+  background-color: #FF3B27;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#winrate {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -50px;
+  clear: both;
+  z-index: 10;
+  font-weight: 300;
+  color: rgb(0, 0, 0);
+}
+
+/* ------------------------------DESKTOP version-------------------------------------- */
+@media only screen and (min-width: 720px) {
+  body {
+    margin: 0px 20% 0px 20%;
+  }
+
+  .welcome {
+    margin-top: 70px;
+  }
+  .text {
+    display: inline-block;
+    margin-top: 15px;
+  }
+
+  .intro {
+    margin-top: 40px;
+  }
+
+  .intro h1 {
+    font-size: 45px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+
+  .menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 60%;
+  }
+  .menu p {
+    margin-top: 0;
+  }
+
+  .theme {
+    float: left;
+    display: inline-block;
+  }
+
+  .sound {
+    display: inline-block;
+  }
+
+  .log {
+    float: right;
+    display: inline-block;
+  }
+
+  #summonerLevel,
+  #summonerIcon,
+  #summonerName,
+  #enterButton,
+  #ok,
+  #summonerNameInput,
+  .seeStats,
+  .addStats,
+  .rankedSolo,
+  .rankedFlex,
+  .normal,
+  .gameInfoMenus {
+    margin-left: 30%;
+  }
+  .seeStats,
+  .addStats,
+  #summonerNameInput,
+  .rankedSolo,
+  .rankedFlex,
+  .normal,
+  .gameInfoMenus {
+    width: 30%;
+  }
+  #logo {
+    width: 250px;
+  }
+
+  #enterButton,
+  #ok {
+    width: 15%;
+  }
+  #ok {
+    margin-left: calc(40% - 15% + 6px);
+  }
+
+  .summoner,
+  .barra {
+    width: 60%;
+  }
+  .barra {
+    left: 20%;
+  }
+  #canvasForHTML {
+    width: 50%;
+    top: 0;
+    z-index: 6;
+    -webkit-transform: translate(-50%);
+  }
+
+  #settings {
+    left: 75%;
+  }
+
+  #backArrowAdd,
+  #backArrowSee {
+    left: 25%;
+  }
+
+  #Mode.Ranked.Solo {
+    border-right: 0px;
+    border-bottom: none;
+  }
+
+  .setas {
+    width: 50%;
+    margin-left: 30%;
+  }
+
+  .tabelas#matches {
+    width: 50%;
+  }
+  .tabelas#matchesLanes {
+    width: 50%;
+  }
+  .tabelas#matchesChamp {
+    width: 50%;
+  }
+
+  #ChampStats {
+    width: 300px;
+    top: 12vh;
+  }
+}
+
+/* ------------------- iPhone 5/SE -------------------- */
+@media only screen and (max-height: 570px), screen and (max-width: 300px) {
+  #ChampStats {
+    top: 8vh;
+  }
+
+  /* gradiente branco de transição */
+  body:after {
+    height: 3em;
+  }
+
+  #canvasForHTML {
+    top: 25%;
+  }
+  #ok {
+    position: relative;
+    top: 80px;
+    margin-bottom: 90px;
+    margin-left: 50%;
+  }
+}
