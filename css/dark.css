@@ -3,7 +3,7 @@
 
 /* CSS files add styling rules to your content */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-@import url("https://cdn.glitch.com/3b78a30b-b6d9-49a8-9ccc-c3cff4a45fa5%2FOPTINonoy-Bold.otf?v=1609181954621");
+@import url(GGWP/fonts/Nonoy-Bold.otf);
 
 html {
   height: 100vh;
