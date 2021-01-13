@@ -183,7 +183,7 @@ $(document).on("click", "#audioOn", function () {
 	if ($(".select-items").hasClass("DarkMode") === true) {
 		$(this).attr(
 			"src",
-			"img/interface/DarkMode/audioOff.svg"
+			"img/interface/DarkMode/audioOff.png"
 		);
 	} else {
 		$(this).attr(
@@ -202,7 +202,7 @@ $(document).on("click", "#audioOff", function () {
 	if ($(".select-items").hasClass("DarkMode") === true) {
 		$(this).attr(
 			"src",
-			"img/interface/DarkMode/audioOn.svg"
+			"img/interface/DarkMode/audioOn.png"
 		);
 	} else {
 		$(this).attr(
