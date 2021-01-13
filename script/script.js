@@ -141,6 +141,13 @@ $(document).on("click", ".darkB", function () {
 		"src",
 		"img/interface/DarkMode/audioOn.png"
 	);
+	
+	$("#audioOff").attr(
+		"src",
+		"img/interface/DarkMode/audioOff.png"
+	);
+	
+	
 	$(this).attr(
 		"src",
 		"img/interface/DarkMode/moon.png"
@@ -175,6 +182,11 @@ $(document).on("click", ".lightB", function () {
 	$("#audioOn").attr(
 		"src",
 		"img/interface/LightMode/audioOn.svg"
+	);
+	
+	$("#audioOff").attr(
+		"src",
+		"img/interface/LightMode/audioOn.png"
 	);
 });
 
