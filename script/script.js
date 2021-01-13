@@ -1055,7 +1055,7 @@ function enter() {
 	$("#summonerLevel").html("lvl " + SummonerLevel); //Substituti no HTML
 
 	//Calcular um Summoner Icon aleatório
-	let SummonerIcon = 0 + Math.floor(Math.random() * 1128);
+	let SummonerIcon = 0 + Math.floor(Math.random() * 262);
 	$("#summonerIcon").attr(
 		"src",
 		"img/icon/Icon_" +
