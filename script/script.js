@@ -1664,7 +1664,7 @@ function DrawData(GameMode) {
 			//trocar a source do audio para o do champion
 			$("#champAudio").attr(
 				"src",
-				"sound/champions" +
+				"sound/champions/" +
 				ArrayChampions[checkclick] +
 				".mp3"
 			);
